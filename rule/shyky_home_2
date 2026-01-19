@@ -1,29 +1,44 @@
 [custom]
-;解决DNS泄露，无分流群组
+; 向日葵相关域名直连（增强版）
 DOMAIN-KEYWORD,oray,Direct
+DOMAIN-KEYWORD,sunlogin,Direct
+DOMAIN-KEYWORD,oraybox,Direct
 DOMAIN-SUFFIX,oray.com,Direct
 DOMAIN-SUFFIX,sunlogin.com,Direct
+DOMAIN-SUFFIX,sunlogin.cn,Direct
 DOMAIN-SUFFIX,oray.net,Direct
 DOMAIN-SUFFIX,orayimg.com,Direct
-ruleset=🚀 节点选择,[]DOMAIN-SUFFIX,xn--ngstr-lra8j.com
-ruleset=🚀 节点选择,[]DOMAIN-SUFFIX,services.googleapis.cn
-ruleset=🚀 节点选择,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleCNProxyIP.list
+DOMAIN-SUFFIX,orayos.com,Direct
+DOMAIN-SUFFIX,orayapi.com,Direct
+DOMAIN-SUFFIX,oraypro.com,Direct
+IP-CIDR,119.147.120.0/24,Direct
+IP-CIDR,157.255.192.0/24,Direct
+IP-CIDR,180.163.224.0/19,Direct
+
+; 国内网络直连规则（放在前面确保优先匹配）
 ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
 ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list
 ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list
 ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaMedia.list
-ruleset=REJECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
-ruleset=REJECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list
 ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list
 ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaIp.list
+
+; 分流规则
+ruleset=🚀 节点选择,[]DOMAIN-SUFFIX,xn--ngstr-lra8j.com
+ruleset=🚀 节点选择,[]DOMAIN-SUFFIX,services.googleapis.cn
+ruleset=🚀 节点选择,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleCNProxyIP.list
+
+; 广告拦截
+ruleset=REJECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
+ruleset=REJECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list
+
+; 最终规则
 ruleset=DIRECT,[]GEOIP,CN,no-resolve
 ruleset=🚀 节点选择,[]FINAL
 
 custom_proxy_group=🚀 节点选择`select`[]♻️ 自动选择`[]DIRECT`.*
 custom_proxy_group=♻️ 自动选择`url-test`.*`http://www.gstatic.com/generate_204`300,,50
 custom_proxy_group=常用`select`(?=.*(新加坡|香港|日本|美国))^(?=.*(IEPL))
-
-
 
 enable_rule_generator=true
 overwrite_original_rules=true
