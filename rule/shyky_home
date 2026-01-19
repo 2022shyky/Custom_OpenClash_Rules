@@ -1,20 +1,34 @@
 [custom]
-; 向日葵相关域名直连（增强版）
+; 首先确保向日葵所有域名直连
 DOMAIN-KEYWORD,oray,Direct
 DOMAIN-KEYWORD,sunlogin,Direct
-DOMAIN-KEYWORD,oraybox,Direct
+DOMAIN-KEYWORD,sunloginoray,Direct
 DOMAIN-SUFFIX,oray.com,Direct
 DOMAIN-SUFFIX,sunlogin.com,Direct
-DOMAIN-SUFFIX,sunlogin.cn,Direct
 DOMAIN-SUFFIX,oray.net,Direct
 DOMAIN-SUFFIX,orayimg.com,Direct
 DOMAIN-SUFFIX,orayos.com,Direct
+DOMAIN-SUFFIX,orayzt.com,Direct
 DOMAIN-SUFFIX,orayapi.com,Direct
-DOMAIN-SUFFIX,oraypro.com,Direct
-IP-CIDR,119.147.120.0/24,Direct
-IP-CIDR,157.255.192.0/24,Direct
-IP-CIDR,180.163.224.0/19,Direct
+DOMAIN-SUFFIX,beacon.oray.com,Direct
+DOMAIN-SUFFIX,api.oray.com,Direct
+DOMAIN-SUFFIX,sx1.sunlogin.com,Direct
+DOMAIN-SUFFIX,sx2.sunlogin.com,Direct
+DOMAIN-SUFFIX,sx3.sunlogin.com,Direct
+DOMAIN-SUFFIX,sx4.sunlogin.com,Direct
+DOMAIN-SUFFIX,sx5.sunlogin.com,Direct
+DOMAIN-SUFFIX,sx6.sunlogin.com,Direct
+DOMAIN-SUFFIX,sx7.sunlogin.com,Direct
 
+; 向日葵CDN IP段（重要！）
+IP-CIDR,119.147.120.0/24,Direct,no-resolve
+IP-CIDR,157.255.192.0/24,Direct,no-resolve
+IP-CIDR,180.163.224.0/19,Direct,no-resolve
+IP-CIDR,14.215.160.0/20,Direct,no-resolve
+IP-CIDR,112.90.82.0/24,Direct,no-resolve
+IP-CIDR,101.227.163.0/24,Direct,no-resolve
+
+; 保持原有规则...
 ; 国内网络直连规则（放在前面确保优先匹配）
 ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
 ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list
